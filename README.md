@@ -1,2 +1,2 @@
 # iListenPy
-Aplicación de escritorio
+Desktop Aplication by Andre and Dani
