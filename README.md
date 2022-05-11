@@ -1,2 +1,2 @@
 # iListenPy
-Desktop Aplication by Andre and Dani
+Desktop Application by Andre and Dani
