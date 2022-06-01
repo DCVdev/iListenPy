@@ -13,7 +13,7 @@ import tkinter.ttk as ttk
 
 root = Tk()
 root.title('iListener')
-root.iconbitmap('imageness/icono.png')
+
 
 #width="500" , height="650"
 root.geometry("600x650")
