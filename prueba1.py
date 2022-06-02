@@ -1,53 +1,23 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import glob, os
+from functools import partial
+import tkinter as tk
 
-root = Tk()
-root.geometry("800x600")
 
-photos = []
 
-def displayImg(img):
-    image = Image.open(img)
-    photo = ImageTk.PhotoImage(image)
-    photos.append(photo)#keep references!
-    newPhoto_label = Label(image=photo)
-    newPhoto_label.pack()
+def db_view_data(boton):
+    print(boton["text"])
 
-for file in glob.glob("imgs/*jpg"):
-    displayImg(file)
-    print(file)
-   
 
-imagenes=[]
+root = tk.Tk()
+root.geometry("400x300")
 
-def displayImg(img):
-    image = Image.open(img)
-    photo = ImageTk.PhotoImage(image)
-    imagenes.append(photo)#keep references!
-    newPhoto_label = Label(image=photo)
-    newPhoto_label.pack()
 
-for f in glob.glob("imgs/*jpg"):
-    displayImg(f)
-    print(f)
-    
-    
-imagenes=[]
-for f in files:
-    imagenes.append(f)
-for img in imagenes:
-    imagen=Image.open(dir+img)
-    print(img)
-    img = imagen.resize((100,100))
-    my_img=ImageTk.PhotoImage(img)
-    panel=Label(frm,image=my_img)
-    panel.grid(row=posx,column=posy)
-    posx=posx +1
-    if(posx/10==1):
-        posy+1
-        pos
-        
-        
+for n in range(10):
+    texto = str(n)
+    boton = tk.Button(root, text=texto)
+    boton.configure(command=partial(db_view_data, boton))
+    boton.pack()
 
 root.mainloop()
