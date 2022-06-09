@@ -28,6 +28,7 @@ def playCancion(btn):
     z = int(btn)
     pygame.mixer.music.load(musicas[z])
     pygame.mixer.music.play()
+    return z
 #Función que inserta la imagen en el frame
 def displayImg(img,z):
     image = Image.open(img)
@@ -78,7 +79,7 @@ def botonStop(z):
     imagez= btnstop.resize((50,50))
     stop=ImageTk.PhotoImage(imagez)
     imgsbotons.append(stop)
-    stopbtn=Button(image=stop)
+    stopbtn=Button(image=stop,command=stopp)
     stopbtn.grid(column=x,row=y)
 #Función que añade el botón de volumen
 def botonVolumen(z):
@@ -86,7 +87,7 @@ def botonVolumen(z):
     imagez= btnvolumen.resize((50,50))
     volumen=ImageTk.PhotoImage(imagez)
     imgsbotons.append(volumen)
-    volumenbtn=ttk.Progressbar()
+    volumenbtn=Button(image=volumen, command=partial(volumen1,volumen))
     volumenbtn.grid(column=x,row=y)
 #Función que pausa las canciones
 def pausar():
@@ -94,10 +95,17 @@ def pausar():
 #Función que reproduce las canciones
 def reproducir():
     pygame.mixer.music.unpause()
-#Función que pasa a la siguiente canción
-def volumen():
-    pygame.mixer.music.get_volume()
-    
+#Función que para la canción
+def stopp():
+    pygame.mixer.music.stop()
+#Función que actualiza el volumen de la canción
+def volumen1(volumenbtn):
+    frmvol=ttk.Frame(volumenbtn)
+    frmvol.grid()
+    s = pygame.mixer.music.get_volume()
+    print(s)
+#Funcion que pasa a la siguiente canción
+
 #bucle que lee las imágenes de las canciones y llama a la función para poner las imagenes en el frame
 for f in glob.glob("imgs/*.*"):
     displayImg(f,i)
