@@ -45,7 +45,7 @@ def tiempo_cancion():
     cancion = caja_cancion.get(cancion_actual)
 
     #estructura de directorio y titulo de la cancion en MP3
-    cancion= f'C:/Users/andre/Downloads/Andre Proyectos/Python MP3/Canciones/{cancion}.mp3'
+    cancion= f'music/{cancion}.mp3'
 
 
     #obtener la duración de la canción con Mutagen ( pip install mutagen)
@@ -103,10 +103,10 @@ def tiempo_cancion():
 # Añadir canciones (FUNCIONES)
 # **** AÑADE OTRA CANCIÓN ABRIENDO EL ARCHIVO LOCAL ****
 def añadir_cancion():
-    cancion= filedialog.askopenfilename(initialdir='canciones/' , title="Elige una canción", filetypes=(("mp3 files", "*.mp3"),))
+    cancion= filedialog.askopenfilename(initialdir='music/' , title="Elige una canción", filetypes=(("mp3 files", "*.mp3"),))
 
     # ********  QUITAR INFORMACIÓN DEL DIRECTORIO QUE SALE EN LA CAJA DE CANCIÓN **********
-    cancion= cancion.replace("C:/Users/andre/Downloads/Andre Proyectos/Python MP3/Canciones/","")
+    cancion= cancion.replace("music/","")
     cancion= cancion.replace(".mp3","")
 
     # Añadir canción a la caja de la lista.
@@ -129,7 +129,7 @@ def play():
     global parar
     parar = False
     cancion= caja_cancion.get(ACTIVE)
-    cancion= f'C:/Users/andre/Downloads/Andre Proyectos/Python MP3/Canciones/{cancion}.mp3'
+    cancion= f'music/{cancion}.mp3'
 
     pygame.mixer.music.load(cancion)
     pygame.mixer.music.play(loops=0)
@@ -177,7 +177,7 @@ def siguiente_cancion():
     cancion = caja_cancion.get(siguientes)
 
     #Añadir estructura de directorio y titulo de la cancion en MP3
-    cancion= f'C:/Users/andre/Downloads/Andre Proyectos/Python MP3/Canciones/{cancion}.mp3'
+    cancion= f'music/{cancion}.mp3'
     pygame.mixer.music.load(cancion)
     pygame.mixer.music.play(loops=0)
 
@@ -207,7 +207,7 @@ def cancion_anterior():
     cancion = caja_cancion.get(siguientes)
 
     #Añadir estructura de directorio y titulo de la cancion en MP3
-    cancion= f'C:/Users/andre/Downloads/Andre Proyectos/Python MP3/Canciones/{cancion}.mp3'
+    cancion= f'music/{cancion}.mp3'
     pygame.mixer.music.load(cancion)
     pygame.mixer.music.play(loops=0)
 
@@ -256,7 +256,7 @@ def pause(esta_pausado):
  # ***************************  Creamos el Slide *******************************
 def slide(X):
     cancion= caja_cancion.get(ACTIVE)
-    cancion= f'C:/Users/andre/Downloads/Andre Proyectos/Python MP3/Canciones/{cancion}.mp3'
+    cancion= f'music/{cancion}.mp3'
 
     pygame.mixer.music.load(cancion)
     pygame.mixer.music.play(loops=0,start=int(mi_slider.get()))
@@ -279,10 +279,10 @@ caja_cancion= Listbox(volumen, bg="black", fg="white", width=80,height=20, selec
 caja_cancion.grid(row=0, column=0)
 
 # Definir los controles de botonoes en imagenes.
-volver_btn_img = PhotoImage(file='imageness/volver.png')
-play_btn_img = PhotoImage(file='imageness/play.png')
-siguiente_btn_img = PhotoImage(file='imageness/Siguiente.png')
-pausar_btn_img = PhotoImage(file='imageness/pause.png')
+volver_btn_img = PhotoImage(file='imgtbn/sefore.jpg')
+play_btn_img = PhotoImage(file='imgbtn/play.jpg')
+siguiente_btn_img = PhotoImage(file='imgbtn/siguiente.jpg')
+pausar_btn_img = PhotoImage(file='imgbtn/pause.')
 cerrar_btn_img = PhotoImage(file='imageness/stop.png')
 
 # Crear el control de botones (VENTANA)
