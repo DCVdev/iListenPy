@@ -1,1 +1,1 @@
-python caja.py
+python main.py
