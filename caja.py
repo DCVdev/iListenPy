@@ -65,6 +65,7 @@ def botonSiguiente(z):
     imagez= btnsiguiente.resize((50,50))
     siguiente=ImageTk.PhotoImage(imagez)
     imgsbotons.append(siguiente)
+    s=0
     siguientebtn=Button(image=siguiente,command=siguientes)
     siguientebtn.grid(column=x,row=y)
 #Función que añade el botón de anterior
@@ -108,18 +109,25 @@ def volumen1(volumenbtn):
     print(s)
 #Funcion que pasa a la siguiente canción
 def siguientes():
-   s=btns[0] 
-   s=s+1
-   pygame.mixer.music.load(musicas[s]) 
+   if(len(btns)<1): 
+        z=btns[0]
+   else:
+        z=btns[-1]
+        z+=1
+   pygame.mixer.music.load(musicas[z]) 
    pygame.mixer.music.play() 
-   btns.append(s)
+   btns.append(z)
+  
 #Función que pasa a la anterior canción
 def anteriores():
-   s=btns[0] 
-   s=s-1
-   pygame.mixer.music.load(musicas[s]) 
+   if(len(btns)<1): 
+        z=btns[0]
+   else:
+        z=btns[-1]
+        z-=1
+   pygame.mixer.music.load(musicas[z]) 
    pygame.mixer.music.play() 
-   btns.append(s)
+   btns.append(z)
 #bucle que lee las imágenes de las canciones y llama a la función para poner las imagenes en el frame
 for f in glob.glob("imgs/*.*"):
     displayImg(f,i)
