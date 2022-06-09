@@ -1,6 +1,5 @@
 from lib2to3.pgen2.literals import evalString
 import os,sys,glob
-from pkgutil import get_data
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk
@@ -40,7 +39,10 @@ def displayImg(img,z):
     texto=str(z)
     newPhoto_label = Button(image=photo,text=texto)
     newPhoto_label.configure(command=partial(playCancion,texto))
-    photo_txt = Label(text=img)
+    #Borramos lo innecesario para que se quede limpio
+    imgi=img[5:]
+    imgii=imgi.replace('.jpg'," ")
+    photo_txt = Label(text=imgii)
     newPhoto_label.grid(column=posx,row=posy)
     photo_txt.grid(column=x,row=y)
 #Función que añade el botón de reproducir
@@ -65,7 +67,6 @@ def botonSiguiente(z):
     imagez= btnsiguiente.resize((50,50))
     siguiente=ImageTk.PhotoImage(imagez)
     imgsbotons.append(siguiente)
-    s=0
     siguientebtn=Button(image=siguiente,command=siguientes)
     siguientebtn.grid(column=x,row=y)
 #Función que añade el botón de anterior
