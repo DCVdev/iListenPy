@@ -1,5 +1,5 @@
 from lib2to3.pgen2.literals import evalString
-import os,sys,glob
+import os,sys,glob,random
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageTk
@@ -86,13 +86,13 @@ def botonStop(z):
     stopbtn=Button(image=stop,command=stoping)
     stopbtn.grid(column=x,row=y)
 #Función que añade el botón de volumen
-def botonVolumen(z):
-    btnvolumen = Image.open(z)
-    imagez= btnvolumen.resize((50,50))
-    volumen=ImageTk.PhotoImage(imagez)
-    imgsbotons.append(volumen)
-    volumenbtn=Button(image=volumen, command=partial(volumen1,volumen))
-    volumenbtn.grid(column=x,row=y)
+def botonRandom(z):
+    btnrandom = Image.open(z)
+    imagez= btnrandom.resize((50,50))
+    random=ImageTk.PhotoImage(imagez)
+    imgsbotons.append(random)
+    randombtn=Button(image=random, command=randoms)
+    randombtn.grid(column=x,row=y)
 #Función que pausa las canciones
 def pausar():
     pygame.mixer.music.pause()
@@ -103,11 +103,11 @@ def reproducir():
 def stoping():
     pygame.mixer.music.stop()
 #Función que actualiza el volumen de la canción
-def volumen1(volumenbtn):
-    frmvol=ttk.Frame(volumenbtn)
-    frmvol.grid()
-    s = pygame.mixer.music.get_volume()
-    print(s)
+def randoms():
+    r=random.randint(0,len(musicas))
+    pygame.mixer.music.load(musicas[r])
+    pygame.mixer.music.play()
+    btns.append(r)
 #Funcion que pasa a la siguiente canción
 def siguientes():
    if(len(btns)<1): 
@@ -118,7 +118,6 @@ def siguientes():
    pygame.mixer.music.load(musicas[z]) 
    pygame.mixer.music.play() 
    btns.append(z)
-  
 #Función que pasa a la anterior canción
 def anteriores():
    if(len(btns)<1): 
@@ -145,7 +144,10 @@ for f in glob.glob("imgs/*.*"):
 for m in glob.glob("music/*.mp3"):
         cargarCancion(m)    
 #bucle que lee los botones y tiene condicionales para saber que botón poner y luego llama a la función   
-for img in glob.glob("imgbtn/*.jpg"):   
+for img in glob.glob("imgbtn/*.jpg"): 
+    if(posx==1|posx==2|posx==3|posx==4|posx==5):
+        y+=2 
+        posx=0
     if(img=="imgbtn\play.jpg"):
         botonPlay(img)
         x+=1
@@ -161,7 +163,7 @@ for img in glob.glob("imgbtn/*.jpg"):
     elif(img=="imgbtn\stop.jpg"):
         botonStop(img)
         x+=1
-    elif(img=="imgbtn\solumen.jpg"):
-        botonVolumen(img)
+    elif(img=="imgbtn\sandom.jpg"):
+        botonRandom(img)
         x+=1
 root.mainloop()
