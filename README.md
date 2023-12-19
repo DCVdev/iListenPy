@@ -9,4 +9,9 @@ https://github.com/DCVdev/iListenPy/assets/98882413/54084ead-f9b0-4be0-ae55-80b2
 
 ![Screenshot_160](https://github.com/DCVdev/iListenPy/assets/98882413/73595b9e-bccd-4bfa-b73f-567670f3c5a1)
 
+    Los archivos .bat sirven para instalar las dependencias y ejecutar el programa sin escribir el comando de ejecutar python.
+![Screenshot_161](https://github.com/DCVdev/iListenPy/assets/98882413/6a64df7a-9025-4beb-9ead-654c73ffa20f)
 
+![Screenshot_162](https://github.com/DCVdev/iListenPy/assets/98882413/90961be6-61c8-4477-8cc8-c8b8c463cf3c)
+
+    Las dependencias utilizadas son Pygame, Pillow y TKinter.
